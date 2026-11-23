@@ -1,5 +1,6 @@
 <?php
 require_once "db.php";
+session_start();
 ?>
 
 <!doctype html>
@@ -9,8 +10,17 @@ require_once "db.php";
 </head>
 <body>
   <header>
-    <nav aria-label="Main navigation"><a href="index.php">Home</a><a href="search.php">Find a book</a><a href="my-reservations.php">My reservations</a></nav>
-    <a href="login.php">Log in</a>
+    <nav aria-label="Main navigation">
+<?php if (isset($_SESSION['Username'])) { 
+?>
+<a href="index.php">Home</a>
+<a href="search.php">Find a book</a>
+<a href="reservations.php">My reservations</a>
+<?php } else { ?>
+<a href="index.php">Home</a>
+<a href="login.php">Log in</a>
+<?php } ?>
+</nav>
 <h1> Reserve page: </h1>
   </header>
 

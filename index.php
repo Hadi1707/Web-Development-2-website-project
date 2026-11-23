@@ -11,12 +11,18 @@ session_start();
 </head>
 <body>
   <header>
-      <nav aria-label="Main navigation">
-      <a href="index.php">Home</a>
-      <a href="search.php">Find a book</a>
-      <a href="login.php">My account</a>
-    </nav>
-    <a href="register.php">Join the library</a>
+	<nav aria-label="Main navigation">
+	<a href="index.php">Home</a>
+	<a href="search.php">Find a book</a>
+<?php if (isset($_SESSION['Username'])) { 
+?>
+	<a href="reservations.php">My reserved Books</a>
+	<a href="logout.php">Logout</a>	
+<?php } else { ?>
+	<a href="login.php">My account</a>
+	<a href="register.php">Join the library</a>
+<?php } ?>
+	</nav>
 <h1>Library Reservation System</h1>
 <?php 
 if(isset($_SESSION['Username'])){
